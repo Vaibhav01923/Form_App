@@ -4,6 +4,8 @@ import { connectDB } from "./lib/db.js";
 import authRoutes from "./routes/auth.route.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import formRoutes from "./routes/form.route.js";
+import responseRoutes from "./routes/response.route.js";
 
 dotenv.config();
 
@@ -22,6 +24,8 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/forms", formRoutes);
+app.use("/api/responses", responseRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is Running on PORT 8000");
