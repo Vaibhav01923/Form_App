@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import FormEditPage from "./pages/FormEditPage";
 import PublicFormPage from "./pages/PublicFormPage";
+import FormResponsesPage from "./pages/FormResponsesPage";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -39,6 +40,10 @@ const App = () => {
         <Route
           path="/forms/:formId/edit"
           element={authUser ? <FormEditPage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/forms/:formId/responses"
+          element={authUser ? <FormResponsesPage /> : <Navigate to="/login" />}
         />
         <Route path="/form/:id" element={<PublicFormPage />} />
         <Route

@@ -1,4 +1,4 @@
-import { Share2, Copy, Check, Edit3, Plus } from "lucide-react";
+import { Share2, Copy, Check, Edit3, Plus, BarChart3 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FormImagePlaceholder from "../components/common/FormImagePlaceholder";
@@ -64,6 +64,11 @@ const HomePage = () => {
   const handleEditClick = (form, event) => {
     event.stopPropagation(); // Prevent form click
     navigate(`/forms/${form._id}/edit`);
+  };
+
+  const handleViewResponses = (form, event) => {
+    event.stopPropagation(); // Prevent form click
+    navigate(`/forms/${form._id}/responses`);
   };
   const handleCreateNewForm = () => {
     setShowCreateModal(true);
@@ -185,14 +190,21 @@ const HomePage = () => {
                   <div className="flex gap-2">
                     <button
                       onClick={(e) => handleEditClick(form, e)}
-                      className="flex-1 flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="flex-1 flex items-center justify-center px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
                     >
-                      <Edit3 className="h-4 w-4 mr-2" />
-                      Edit Form
+                      <Edit3 className="h-4 w-4 mr-1" />
+                      Edit
+                    </button>
+                    <button
+                      onClick={(e) => handleViewResponses(form, e)}
+                      className="flex-1 flex items-center justify-center px-3 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm"
+                    >
+                      <BarChart3 className="h-4 w-4 mr-1" />
+                      Responses
                     </button>
                     <button
                       onClick={(e) => handleCopyLink(form, e)}
-                      className="flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      className="flex items-center justify-center px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
                     >
                       <Share2 className="h-4 w-4" />
                     </button>

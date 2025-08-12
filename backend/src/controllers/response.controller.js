@@ -113,6 +113,7 @@ export const getFormResponses = async (req, res) => {
         _id: form._id,
         title: form.title,
         slug: form.slug,
+        questions: form.questions, // Include questions with correct answers
       },
       responses,
       totalResponses: responses.length,

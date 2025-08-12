@@ -115,6 +115,18 @@ export const useAuthStore = create((set) => ({
       throw error;
     }
   },
+  getFormResponses: async (formId) => {
+    try {
+      console.log("Making request to:", `/responses/form/${formId}`);
+      const res = await axiosInstance.get(`/responses/form/${formId}`);
+      console.log("API response:", res.data);
+      return res.data;
+    } catch (error) {
+      console.log("Error in getFormResponses", error);
+      console.log("Error response:", error.response?.data);
+      throw error;
+    }
+  },
 }));
 
 export default useAuthStore;
